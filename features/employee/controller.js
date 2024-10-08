@@ -5,6 +5,22 @@ class EmployeeController {
         this.prefix = 'employees';
     }
 
+    validateParams(params) {
+        if (Object.keys(params).length === 0) {
+            return [false, "Parameters name, position and salary cannot be empty."];
+        }
+        if (!params.name) {
+            return [false, "Parameters name cannot be empty."];
+        }
+        if (!params.position) {
+            return [false, "Parameters position cannot be empty."];
+        }
+        if (!params.salary) {
+            return [false, "Parameters salary cannot be empty."];
+        }
+        return [true, ""];
+    }
+
     async getAllEmployees(req, res) {
         try {
             const employees = await employeeModel.findAll();
@@ -60,6 +76,15 @@ class EmployeeController {
                 position: req.body.position,
                 salary: req.body.salary
             }
+
+            let [statusValidate, messageValidate] = this.validateParams(req.body);
+            if (statusValidate == false) {
+                return res.status(200).json({
+                    success: statusValidate,
+                    message: messageValidate, 
+                });
+            }
+
             await employeeModel.create(employeeData);
             return res.status(200).json({
                 success: true,

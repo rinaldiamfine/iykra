@@ -45,13 +45,36 @@ router.get('/:id', employeeController.getEmployeeById);
  *      tags:
  *          - Employees
  *      description: create a new employee data
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: string
+ *                              description: Employee's name
+ *                              example: Rinaldi
+ *                          position:
+ *                              type: string
+ *                              description: Employee's position
+ *                              example: Fullstack Developer
+ *                          salary:
+ *                              type: integer
+ *                              description: Employee's salary
+ *                              example: 50000
+ *                      required:
+ *                          - name
+ *                          - position
+ *                          - salary
  *      responses:
  *          200:
  *              description: Returns a JSON object with message success create employee.
  *          400:
  *              description: Returns a JSON object with message failed create employee.
  */
-router.post('/', employeeController.createEmployee);
+router.post('/', (req, res) => employeeController.createEmployee(req, res));
 
 /**
  * @swagger
@@ -60,6 +83,29 @@ router.post('/', employeeController.createEmployee);
  *      tags:
  *          - Employees
  *      description: update specific employee data by id
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: string
+ *                              description: Employee's name
+ *                              example: Rinaldi
+ *                          position:
+ *                              type: string
+ *                              description: Employee's position
+ *                              example: Fullstack Developer
+ *                          salary:
+ *                              type: integer
+ *                              description: Employee's salary
+ *                              example: 50000
+ *                      required:
+ *                          - name
+ *                          - position
+ *                          - salary
  *      parameters:
  *          - in: path
  *            name: id
@@ -73,7 +119,7 @@ router.post('/', employeeController.createEmployee);
  *          400:
  *              description: Returns a JSON object with message failed update employee.
  */
-router.put('/:id', employeeController.updateEmployee);
+router.put('/:id', (req, res) => employeeController.updateEmployee(req, res));
 
 /**
  * @swagger

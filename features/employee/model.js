@@ -9,14 +9,17 @@ const employeeModel = db.define('employees', {
     },
     name: {
         type: Sequelize.STRING,
+        allowNull: false,
         length: 255
     },
     position: {
         type: Sequelize.STRING,
+        allowNull: false,
         length: 255
     },
     salary: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
     },
 }, {
     freezeTableName: true,
