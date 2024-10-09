@@ -1,5 +1,7 @@
 version: '3.8'
 
+name: iykra
+
 services: 
     db:
       container_name: db
@@ -15,6 +17,8 @@ services:
       volumes:
         # - pgdata:/var/lib/postgres ## use docker volumes
         - ./postgres-data:/var/lib/postgresql/data ## using binding local on postgres-data folder
+      networks:
+        - network
 
     app:
       container_name: app
@@ -33,6 +37,12 @@ services:
         - DB_PORT=$DB_PORT
       stdin_open: true
       tty: true
+      networks:
+        - network
+
+networks:
+  network:
+    driver: bridge
 
 # volumes:
 #   pgdata:
