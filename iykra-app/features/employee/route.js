@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const employeeController = require('../employee/controller');
+const employeeController = require('./controller');
 
 /**
  * @swagger

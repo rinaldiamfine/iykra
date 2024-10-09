@@ -1,4 +1,4 @@
-const employeeModel = require('../employee/model');
+const employeeModel = require('./model');
 
 class EmployeeController {
     constructor() {
