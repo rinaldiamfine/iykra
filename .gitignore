@@ -131,3 +131,5 @@ dist
 
 package-lock.json
 postgres-data/*
+docker-data/*
+k8s-data/*

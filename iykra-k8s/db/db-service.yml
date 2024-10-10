@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iykra-db-service
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: iykra-db
+  type: ClusterIP  # Use NodePort if accessing from outside the cluster

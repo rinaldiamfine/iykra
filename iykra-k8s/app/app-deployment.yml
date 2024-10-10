@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iykra-app-deployment
+  labels:
+    app: iykra-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: iykra-app
+  template:
+    metadata:
+      labels:
+        app: iykra-app
+    spec:
+      containers:
+        - name: iykra-app-container
+          image: iykra_app:latest  # Ensure this image is available to the node
+          imagePullPolicy: Never   # Prevent pulling from a registry
+          ports:
+            - containerPort: 3000  # Exposed port
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: db-secret
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"  # Reduced CPU request
+            limits:
+              memory: "512Mi"
+              cpu: "1000m"  # Optional: keep this as is or adjust
