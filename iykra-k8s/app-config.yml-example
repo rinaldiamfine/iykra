@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  API_VERSION: "v1"
+  API_PORT: "8080"
+  API_EXPORT_PORT: "3000"
+  DB_NAME: "iykra_db"
+  DB_USERNAME: "postgres"
+  DB_PASSWORD: "6112qA-Kv_bW"
+  DB_HOST: "iykra-db-service"  # Service name for PostgreSQL
+  DB_PORT: "5432"
+  DB_EXPORT_PORT: "5000"
