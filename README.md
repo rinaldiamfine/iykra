@@ -119,4 +119,4 @@ kubectl exec -it <pod_name> -- psql -U <username>
 
 - API
 You can go to the url on your browser `http://127.0.0.1:3000/docs/`, in here you can test the API using the swagger. You can change the port 3000 based on your configuration.
-![API Screenshot](https://github.com/rinaldiamfine/iykra/blob/dev/assets/api-image.png?raw=true)
+![API Screenshot](https://github.com/rinaldiamfine/iykra/blob/main/assets/api-image.png?raw=true)
