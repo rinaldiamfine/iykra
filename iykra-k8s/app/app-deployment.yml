@@ -5,7 +5,7 @@ metadata:
   labels:
     app: iykra-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: iykra-app
@@ -28,7 +28,7 @@ spec:
           resources:
             requests:
               memory: "256Mi"
-              cpu: "250m"  # Reduced CPU request
+              cpu: "100m"  # Reduced CPU request
             limits:
               memory: "512Mi"
-              cpu: "1000m"  # Optional: keep this as is or adjust
+              cpu: "500m"  # Optional: keep this as is or adjust

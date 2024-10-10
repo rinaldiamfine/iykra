@@ -8,4 +8,4 @@ spec:
       targetPort: 5432
   selector:
     app: iykra-db
-  type: ClusterIP  # Use NodePort if accessing from outside the cluster
+  type: ClusterIP

@@ -8,4 +8,6 @@ spec:
     app: iykra-app
   ports:
     - port: 3000
-      targetPort: 3000  # Map to the same port exposed by the app container
+      targetPort: 8080
+      protocol: TCP
+      name: http

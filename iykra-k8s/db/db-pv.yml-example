@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /Users/macbook/Documents/IYKRA/iykra/k8s-data
+    path: <YOUR_ACTUAL_PATH>/k8s-data # Change this to your actual path on your local
   nodeAffinity:
     required:
       nodeSelectorTerms:
