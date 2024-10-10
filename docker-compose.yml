@@ -1,0 +1,44 @@
+version: '3.8'
+
+name: iykra
+
+services: 
+    db:
+      container_name: db
+      build: ./iykra-db
+      restart: unless-stopped
+      env_file: ./.env
+      environment:
+        - POSTGRES_USER=$DB_USERNAME
+        - POSTGRES_PASSWORD=$DB_PASSWORD
+        - POSTGRES_DB=$DB_NAME
+      ports:
+        - $DB_EXPORT_PORT:$DB_PORT
+      volumes:
+        - ./docker-data:/var/lib/postgresql/data ## using binding local on postgres-data folder
+      networks:
+        - network
+
+    app:
+      container_name: app
+      depends_on:
+        - db
+      build: ./iykra-app
+      restart: unless-stopped
+      env_file: ./.env
+      ports:
+        - $API_EXPORT_PORT:$API_PORT
+      environment:
+        - DB_HOST=db
+        - DB_USER=$DB_USERNAME
+        - DB_PASSWORD=$DB_PASSWORD
+        - DB_NAME=$DB_NAME
+        - DB_PORT=$DB_PORT
+      stdin_open: true
+      tty: true
+      networks:
+        - network
+
+networks:
+  network:
+    driver: bridge

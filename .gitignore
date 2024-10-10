@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+package-lock.json
+postgres-data/*
+docker-data/*
+k8s-data/*
+
+iykra-k8s/app-config.yml
+iykra-k8s/db-secret.yml
+iykra-k8s/db/db-pv.yml
